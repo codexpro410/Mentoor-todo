@@ -7,23 +7,6 @@ import './App.css'
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import useTodo from "./hooks/useTodo";
-/*
-     upload project and url in same comment 
-     comment ... what is SWC  differ from SWC and normal  ( understanding, it's idea, differ)
-     
-
-     SWC (Speedy Web Compiler) 
-     
-     Written in Rust, which makes it extremely fast compared to Babel.
-Focuses on performance and speed, aiming to be an order of magnitude faster.
-Provides a similar set of features for transforming and compiling JavaScript/TypeScript code.
-
-Written in JavaScript and has been the standard for JavaScript compilation and transformation.
-Rich ecosystem with numerous plugins and presets for extensive customization.
-Slightly slower in comparison due to being written in JavaScript.
-
-SWC is often chosen for its speed and performance benefits, 
-     */
 
 function App() {
 
@@ -63,8 +46,6 @@ function App() {
                     ) : (
                       <div className={`${item.checked && "line-through"}`}>{index + 1} - {item.text}</div>
                     )}
-
-        {/* <div className={`${item.checked && "line-through"}`}>{index +1}- {item.text}</div> */}
       </div>
           <div className="flex items-center gap-2">
           {editIndex === index ? (
