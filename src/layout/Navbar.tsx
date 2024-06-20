@@ -5,6 +5,7 @@ export default function Navbar() {
     <div className="flex justify-center gap-5">
     <Link to="/">Using Redux</Link>
     <Link to="/mongez">Using Mongez</Link>
+    <Link to="/normal">Native code</Link>
     </div>
   )
 }

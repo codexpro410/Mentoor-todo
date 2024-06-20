@@ -8,6 +8,7 @@ import ReduxTodo from './Components/reduxComponents/ReduxTodo'
 import { PersistGate } from 'redux-persist/integration/react'
 import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
 import MongezAtomTodo from './Components/mongezComponents/MongezAtomTodo'
+import NormalTodo from './Components/NormalTodo'
 
 
 
@@ -31,6 +32,7 @@ function App() {
                  </Provider>
           } />
           <Route path='/mongez' element={<MongezAtomTodo />}/>
+          <Route path='/normal' element={<NormalTodo/> }/>
           {/* </Route> */}
         </Route>
     )
