@@ -6,6 +6,10 @@ import { Provider } from 'react-redux'
 import { persistor, store } from './Components/reduxComponents/store'
 import ReduxTodo from './Components/reduxComponents/ReduxTodo'
 import { PersistGate } from 'redux-persist/integration/react'
+import { createBrowserRouter, createRoutesFromElements, Route, RouterProvider } from 'react-router-dom'
+import MongezAtomTodo from './Components/mongezComponents/MongezAtomTodo'
+
+
 
 // import MongezAtomTodo from './Components/mongezComponents/MongezAtomTodo'
 
@@ -14,16 +18,30 @@ function App() {
   // const count = countAtom.value;   // value only
   //const [count, setCount] = countAtom.useState(); // if value and changes in same component
   // openAtom .... open, close  instead of boolean
+
+  const router = createBrowserRouter(
+    createRoutesFromElements(
+        <Route>
+          {/* <Route element={<Layout />}> */}
+          <Route index path='/' element={
+                 <Provider store={store}>
+                 <PersistGate loading={null} persistor={persistor}>
+                   <ReduxTodo/>
+                 </PersistGate>
+                 </Provider>
+          } />
+          <Route path='/mongez' element={<MongezAtomTodo />}/>
+          {/* </Route> */}
+        </Route>
+    )
+  )
+
   return (
     <main className='bg-main w-dvw min-h-[100vh] bg-cover flex justify-center tasks-center'>
         
         {/* <NormalTodo/> */}
+        <RouterProvider router={router} />
 
-        <Provider store={store}>
-        <PersistGate loading={null} persistor={persistor}>
-          <ReduxTodo/>
-        </PersistGate>
-        </Provider>
 
         {/* <h1>Atom {count}</h1>
         <button onClick={()=> setCount(count +1)}>increase</button>

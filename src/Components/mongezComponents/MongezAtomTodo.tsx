@@ -7,6 +7,7 @@ import { toast, ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useRef } from 'react';
 import { editIndexAtom, tasksAtom } from './todoAtom';
+import Navbar from '../../layout/Navbar';
 
 function MongezAtomTodo() {
   const [tasks, setTasks] = tasksAtom.useState();
@@ -67,6 +68,7 @@ function MongezAtomTodo() {
     <>
       <div className="container mx-auto border-spacing-0 border max-w-[500px] min-h-[500px] rounded-lg bg-slate-200/90">
         <h1 className="uppercase text-center">To Do List</h1>
+        <Navbar/>
         <div className="ml-12 mt-10 rounded-lg bg-white w-4/6 flex justify-between">
           <input type="text" ref={inputRef} className="outline-none flex-1 rounded-lg" />
           <button onClick={handleAdd}>Add</button>
