@@ -22,14 +22,12 @@ function App() {
 
   const router = createBrowserRouter(
     createRoutesFromElements(
-        <Route>
+      <Route>
           {/* <Route element={<Layout />}> */}
           <Route index path='/' element={
-                 <Provider store={store}>
                  <PersistGate loading={null} persistor={persistor}>
                    <ReduxTodo/>
                  </PersistGate>
-                 </Provider>
           } />
           <Route path='/mongez' element={<MongezAtomTodo />}/>
           <Route path='/normal' element={<NormalTodo/> }/>

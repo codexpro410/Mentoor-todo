@@ -10,6 +10,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { addTask, clearTasks, confirmEditTask, deleteTask, startEditTask, toggleCheck } from "./TodoSlice";
 import { RootState } from "./store";
 import Navbar from "../../layout/Navbar";
+import translations from "../../config/localization";
+import { transFrom } from "@mongez/localization";
 
 // type TaskProps = {
 //   text: string;
@@ -55,15 +57,15 @@ function ReduxTodo() {
           toast.success("Task Updated Successfully")
         }
        }
-
+       const {currentLanguage} = useSelector((state: RootState) => state.todo);
   return (
     <>
        <div className="container mx-auto border-spacing-0 border max-w-[500px] min-h-[500px] rounded-lg bg-slate-200/90">
-      <h1 className='uppercase  text-center'>to do list</h1>
+      <h1 className='uppercase  text-center'>{transFrom(`${currentLanguage}`, translations.todolist)}</h1>
       <Navbar/>
       <div className="ml-12 mt-10 rounded-lg bg-white w-4/6 flex justify-between">
       <input type="text" ref={inputRef}  className='outline-none flex-1 rounded-lg' />
-      <button onClick={handleAdd}>Add</button>
+      <button onClick={handleAdd}>{transFrom(`${currentLanguage}`, translations.add)}</button>
       </div>
       <section className='flex flex-col ml-12 mt-5'>
         {tasks.length < 1 ? <h2 className="text-center capitalize">no todo tasks yet</h2>:        
@@ -97,7 +99,7 @@ function ReduxTodo() {
           </div>
         </section>))}
            
-      {tasks.length > 0 &&( <button onClick={()=>handelClearAll()} className="mx-auto w-fit">Clear All</button> )}
+      {tasks.length > 0 &&( <button onClick={()=>handelClearAll()} className="mx-auto w-fit">{transFrom(`${currentLanguage}`, translations.clearAll)}</button> )}
       </section>
       </div>
       <ToastContainer 

@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mongez/localization": "^2.2.4",
     "@mongez/react-atom": "^5.0.0",
     "@reduxjs/toolkit": "^2.2.5",
     "react": "^18.2.0",

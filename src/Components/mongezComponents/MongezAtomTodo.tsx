@@ -8,7 +8,7 @@ import 'react-toastify/dist/ReactToastify.css';
 import { useEffect, useRef } from 'react';
 import { editIndexAtom, tasksAtom } from './todoAtom';
 import Navbar from '../../layout/Navbar';
-
+import { trans } from "@mongez/localization";
 function MongezAtomTodo() {
   const [tasks, setTasks] = tasksAtom.useState();
   const [editIndex, setEditIndex] = editIndexAtom.useState();
@@ -21,7 +21,7 @@ function MongezAtomTodo() {
 
   const handleAdd = () => {
     if (inputRef.current && inputRef.current.value === '') {
-      return toast.error('Task cannot be empty');
+      return toast.error(trans("warningTask"));
     }
     if (inputRef.current) {
       setTasks([...tasks, { text: inputRef.current.value, checked: false }]);

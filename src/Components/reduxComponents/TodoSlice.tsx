@@ -6,11 +6,13 @@ export type TaskProps = {
 }
 export type TodoStateProps = {
   tasks:TaskProps[],
-  editIndex: number|null
+  editIndex: number|null,
+  currentLanguage:string,
 }
 const initialState: TodoStateProps ={
   tasks:[],
-  editIndex: null
+  editIndex: null,
+  currentLanguage:'ar'
 }
  const todoSlice = createSlice({
   name:'todo',
@@ -41,7 +43,10 @@ const initialState: TodoStateProps ={
       }
       state.editIndex = null
     },
+    toggleLanguage:(state)=>{
+      state.currentLanguage = state.currentLanguage === 'en' ? 'ar' : 'en';
+    }
   }
 })
-export const { addTask, deleteTask, clearTasks, toggleCheck, startEditTask, confirmEditTask} = todoSlice.actions
+export const { addTask, deleteTask, clearTasks, toggleCheck, startEditTask, confirmEditTask, toggleLanguage} = todoSlice.actions
 export default todoSlice.reducer;
