@@ -55,7 +55,7 @@ export const translations: TranslationsList = {
   },
   tasksClearedAll: {
     en: "Clear all",
-    ar: "تم حذف المهام بنجاح",
+    ar: "تم حذف حميع المهام بنجاح",
   },
   warningTask: {
     en: "Task cannot be empty",
@@ -64,7 +64,11 @@ export const translations: TranslationsList = {
   switchLanguage:{
     en:"switch Language",
     ar:"غير اللغة"
-  }
+  },
+  noTasks: {
+    en: "No Todo Tasks Yet",
+    ar: "لا يوجد مهام حتى الآن",
+  },
 };
 
 export default translations;

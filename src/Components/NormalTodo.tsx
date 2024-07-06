@@ -27,7 +27,7 @@ function NormalTodo() {
   return (
     <>
       <div className="container mx-auto border-spacing-0 border max-w-[500px] min-h-[500px] rounded-lg bg-slate-200/90">
-      <h1 className='uppercase  text-center'>to do list</h1>
+
       <Navbar/>
       <div className="ml-12 mt-10 rounded-lg bg-white w-4/6 flex justify-between">
       <input type="text" ref={inputRef}  className='outline-none flex-1 rounded-lg' />

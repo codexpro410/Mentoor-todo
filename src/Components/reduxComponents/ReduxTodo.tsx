@@ -12,6 +12,7 @@ import { RootState } from "./store";
 import Navbar from "../../layout/Navbar";
 import translations from "../../config/localization";
 import { transFrom } from "@mongez/localization";
+import Button from "../UI/Button";
 
 // type TaskProps = {
 //   text: string;
@@ -24,51 +25,51 @@ function ReduxTodo() {
   const dispatch = useDispatch()
   const inputRef = useRef<HTMLInputElement>(null);
   const editInputRef = useRef<HTMLInputElement>(null);
-
+  const {currentLanguage} = useSelector((state: RootState) => state.todo);
   const handleAdd = () =>{
     if (inputRef.current && inputRef.current.value === ''){
-      return toast.error('Task cannot be empty')
+      return toast.error(transFrom(`${currentLanguage}`, translations.warningTask))
     }
     if (inputRef.current) {
       dispatch(addTask(inputRef.current.value))
-      toast.success(`Task ${tasks.length + 1} Added Successfully`)
+      toast.success(transFrom(`${currentLanguage}`, translations.taskadded))
       // inputRef.current.value = ' '
     }
   }
   const handleDelete = (id: number) => { 
     dispatch(deleteTask(id));
-    toast.error(`Task ${id + 1} Deleted`);
+    toast.error(transFrom(`${currentLanguage}`, translations.taskDeleted));
    }
    const handelClearAll = () => { 
     dispatch(clearTasks())
-    toast.error('Tasls Cleared')
+    toast.error(transFrom(`${currentLanguage}`, translations.tasksClearedAll))
     }
     const handleCheck = (index:number) => { 
       dispatch(toggleCheck(index))
-      toast.info('Task status changed')
+      toast.info(transFrom(`${currentLanguage}`, translations.taskStatusChanged))
      }
      const handleEdit = (index:number) => { 
       dispatch(startEditTask(index))
-      toast.warn('Editing Task')
+      toast.warn(transFrom(`${currentLanguage}`, translations.editingTask))
       }
       const handleEditConfirm = (index: number) => { 
         if (editInputRef.current) {
           dispatch(confirmEditTask({index, text:editInputRef.current.value}))
-          toast.success("Task Updated Successfully")
+          toast.success(transFrom(`${currentLanguage}`, translations.taskUpdated))
         }
        }
-       const {currentLanguage} = useSelector((state: RootState) => state.todo);
+
   return (
     <>
        <div className="container mx-auto border-spacing-0 border max-w-[500px] min-h-[500px] rounded-lg bg-slate-200/90">
-      <h1 className='uppercase  text-center'>{transFrom(`${currentLanguage}`, translations.todolist)}</h1>
       <Navbar/>
       <div className="ml-12 mt-10 rounded-lg bg-white w-4/6 flex justify-between">
       <input type="text" ref={inputRef}  className='outline-none flex-1 rounded-lg' />
-      <button onClick={handleAdd}>{transFrom(`${currentLanguage}`, translations.add)}</button>
+      <Button onClick={handleAdd}/>
       </div>
+  
       <section className='flex flex-col ml-12 mt-5'>
-        {tasks.length < 1 ? <h2 className="text-center capitalize">no todo tasks yet</h2>:        
+        {tasks.length < 1 ? <h2 className="text-center capitalize">{(transFrom(`${currentLanguage}`, translations.noTasks))}</h2>:        
         tasks.map((item,index)=>(
         <section key={index} className=' ' >
           <div className="pr-2 flex my-1 tasks-center justify-between hover:bg-blue-100">
